@@ -1,65 +1,94 @@
-import Image from "next/image";
+import Link from "next/link";
+import { Wallet, Unplug, TrendingUp, ArrowRight } from "lucide-react";
+import Hero from "@/components/Hero";
+import InfoCard from "@/components/InfoCard";
+import ShareButton from "@/components/ShareButton";
 
-export default function Home() {
+export default function HomePage() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <>
+      <Hero />
+
+      {/* Drie rustige cards onder de hero */}
+      <section className="mx-auto max-w-6xl px-5 py-14">
+        <div className="grid gap-5 md:grid-cols-3">
+          <InfoCard
+            icon={Wallet}
+            title="Grip op kosten"
+            text="Minder gevoelig voor prijsschommelingen."
+          />
+          <InfoCard
+            icon={Unplug}
+            title="Minder afhankelijk"
+            text="Meer controle over energie, leveranciers en externe markten."
+          />
+          <InfoCard
+            icon={TrendingUp}
+            title="Toekomstbestendig"
+            text="Beter voorbereid op groei, regelgeving en klantvragen."
+          />
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+      </section>
+
+      {/* Over deze scan / hoe werkt het */}
+      <section id="hoe-werkt-het" className="bg-lightgreen">
+        <div className="mx-auto max-w-6xl px-5 py-16">
+          <div className="grid gap-10 md:grid-cols-2 md:items-start">
+            <div>
+              <h2 className="text-3xl font-black text-anthracite">
+                Over deze scan
+              </h2>
+              <p className="mt-4 text-base leading-relaxed text-anthracite/75">
+                Deze scan helpt je in een paar minuten inzicht te krijgen in hoe
+                weerbaar je bedrijf is tegen energie-onzekerheid. Je beantwoordt
+                12 korte meerkeuzevragen over kosten, afhankelijkheid,
+                leveringszekerheid, flexibiliteit en toekomstbestendigheid.
+              </p>
+              <p className="mt-4 text-base leading-relaxed text-anthracite/75">
+                Je krijgt een totaalscore, een risicoprofiel en drie concrete
+                vervolgstappen. De uitkomst is{" "}
+                <strong className="font-bold">indicatief</strong> en bedoeld als
+                startpunt voor gesprek — geen exact financieel advies.
+              </p>
+              <p className="mt-4 text-base leading-relaxed text-anthracite/75">
+                De scan laat ook zien wat scenario&apos;s zoals stijgende
+                energieprijzen, netcongestie en internationale onrust voor je
+                bedrijf kunnen betekenen.
+              </p>
+            </div>
+            <ol className="space-y-4">
+              {[
+                "Beantwoord 12 korte meerkeuzevragen.",
+                "Je antwoorden worden direct omgezet in scores op vijf thema's.",
+                "Bekijk je totaalscore, profiel en drie logische vervolgstappen.",
+              ].map((step, i) => (
+                <li
+                  key={i}
+                  className="flex items-start gap-4 rounded-card border border-black/5 bg-white p-4"
+                >
+                  <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-green font-bold text-white">
+                    {i + 1}
+                  </span>
+                  <span className="pt-1 text-base font-medium text-anthracite">
+                    {step}
+                  </span>
+                </li>
+              ))}
+            </ol>
+          </div>
+
+          <div className="mt-10 flex flex-col items-center gap-4 sm:flex-row">
+            <Link
+              href="/scan"
+              className="inline-flex items-center gap-2 rounded-full bg-green px-7 py-3.5 text-base font-bold text-white transition-colors hover:bg-green-dark"
+            >
+              Start de scan
+              <ArrowRight className="h-5 w-5" aria-hidden="true" />
+            </Link>
+            <ShareButton />
+          </div>
         </div>
-      </main>
-    </div>
+      </section>
+    </>
   );
 }

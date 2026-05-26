@@ -1,26 +1,39 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+/* Impuls Zeeland huisstijl */
+@theme {
+  --color-green: #46962b;
+  --color-green-dark: #3a7d23;
+  --color-anthracite: #242b38;
+  --color-lightgreen: #edf5ea;
+  --color-lightblue: #f2f8fa;
+  --color-yellow: #fbba00;
+  --color-mint: #a6d6cc;
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+  --font-sans: var(--font-barlow), ui-sans-serif, system-ui, sans-serif;
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --radius-card: 1.25rem;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: #ffffff;
+  color: #242b38;
+  font-family: var(--font-sans);
+}
+
+/* Duidelijke focus states voor toegankelijkheid */
+*:focus-visible {
+  outline: 3px solid #fbba00;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Printvriendelijke weergave voor "Download resultaat" */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  body {
+    background: #ffffff;
+  }
 }
