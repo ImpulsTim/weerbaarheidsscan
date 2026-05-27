@@ -13,7 +13,7 @@ export default function ShareButton({
   const [copied, setCopied] = useState(false);
 
   const handleShare = async () => {
-    const url = typeof window !== "undefined" ? window.location.origin : "";
+    const url = typeof window !== "undefined" ? window.location.href : "";
     const shareData = {
       title: "Energie Weerbaarheidsscan | Impuls Zeeland",
       text: "Ontdek hoe weerbaar jouw bedrijf is tegen energie-onzekerheid.",
